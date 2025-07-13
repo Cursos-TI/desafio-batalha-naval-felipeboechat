@@ -1,40 +1,45 @@
 #include <stdio.h>
 
 // Desafio Batalha Naval - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
-// Siga os comentários para implementar cada parte do desafio.
+// Nível Novato: Tabuleiro 10x10 com dois navios (um horizontal e um vertical)
+// Exibição formatada e alinhada conforme solicitado
+
+#define TAM_TABULEIRO 10
+#define TAM_NAVIO 3
+#define VALOR_AGUA 0
+#define VALOR_NAVIO 3
 
 int main() {
-    // Nível Novato - Posicionamento dos Navios
-    // Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
-    // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
-    // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
+    int tabuleiro[TAM_TABULEIRO][TAM_TABULEIRO] = {0};
 
-    // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
-    // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
-    // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
-    // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
+    // Posições dos navios conforme exemplo do usuário
+    // Navio horizontal: linha 3 (índice 2), colunas E(4), F(5), G(6)
+    int linha_navio_h = 2, coluna_navio_h = 4;
+    // Navio vertical: coluna J(9), linhas 7(6), 8(7), 9(8)
+    int linha_navio_v = 6, coluna_navio_v = 9;
 
-    // Nível Mestre - Habilidades Especiais com Matrizes
-    // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
-    // Sugestão: Utilize estruturas de repetição aninhadas para preencher as áreas afetadas por essas habilidades no tabuleiro.
-    // Sugestão: Exiba o tabuleiro com as áreas afetadas, utilizando 0 para áreas não afetadas e 1 para áreas atingidas.
+    // Posiciona navio horizontal
+    for (int i = 0; i < TAM_NAVIO; i++) {
+        tabuleiro[linha_navio_h][coluna_navio_h + i] = VALOR_NAVIO;
+    }
+    // Posiciona navio vertical
+    for (int i = 0; i < TAM_NAVIO; i++) {
+        tabuleiro[linha_navio_v + i][coluna_navio_v] = VALOR_NAVIO;
+    }
 
-    // Exemplos de exibição das habilidades:
-    // Exemplo para habilidade em cone:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 1 1 1 1 1
-    
-    // Exemplo para habilidade em octaedro:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 0 0 1 0 0
-
-    // Exemplo para habilidade em cruz:
-    // 0 0 1 0 0
-    // 1 1 1 1 1
-    // 0 0 1 0 0
-
+    // Exibe o tabuleiro formatado e alinhado
+    printf("Tabuleiro Batalha Naval\n");
+    printf("   "); // Reduzido um espaço para alinhar
+    for (char letra = 'A'; letra <= 'J'; letra++) {
+        printf("%3c", letra);
+    }
+    printf("\n");
+    for (int i = 0; i < TAM_TABULEIRO; i++) {
+        printf("%2d -", i + 1);
+        for (int j = 0; j < TAM_TABULEIRO; j++) {
+            printf("%3d", tabuleiro[i][j]);
+        }
+        printf("\n");
+    }
     return 0;
 }
