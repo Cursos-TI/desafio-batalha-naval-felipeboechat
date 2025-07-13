@@ -29,7 +29,7 @@ int main() {
 
     // Exibe o tabuleiro formatado e alinhado
     printf("Tabuleiro Batalha Naval\n");
-    printf("   "); // Reduzido um espaço para alinhar
+    printf("    "); // Reduzido um espaço para alinhar
     for (char letra = 'A'; letra <= 'J'; letra++) {
         printf("%3c", letra);
     }
